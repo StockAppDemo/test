@@ -1,0 +1,33 @@
+.title{
+    text-align: center;
+    color: white;
+    margin-bottom: 0;
+}
+
+.hr1{
+    width: 200px;
+}
+
+.hr2{
+    width: 150px;
+}
+
+.hr3{
+    width: 100px;
+    margin-bottom: 21px;
+}
+
+.stocksContainer{
+    display:inline-flex;
+    flex-shrink: 2;
+    flex-grow: 0;
+    flex-basis: content;
+    /* align-content: center; */
+    /* width: fit-content; */
+    justify-content: space-around;
+    /* justify-content: space-between; */
+    /* justify-content: flex-start; */
+    flex-wrap:wrap;
+    width: fit-content;
+    /* max-width: 1260px; */
+}

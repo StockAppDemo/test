@@ -1,0 +1,66 @@
+
+.chartDetails{
+    /* background-color: #383037; */
+    margin-top: 10px;
+    background-color: #211e1f;
+    color: #f1f1f1; 
+    /* color: white; */
+    display:flex;
+    justify-content:space-around;
+}
+
+.chartData{
+    background-color: #211e1f;
+    /* background-color: #383037; */
+    width:30%;
+    text-align: center;
+}
+
+.backButton{
+    border: 1px solid #f1f1f1;
+    height: 30px;
+    width: 100px;
+    color:#f1f1f1;
+    background-color: #211e1f;
+    margin-bottom: 10px;
+}
+.backButton:hover{
+    border: none;
+    color: black;
+    background-color: #7cb5ec;
+    cursor: pointer;
+}
+
+.chartDataSplit{
+    display:flex;
+    justify-content:space-around;
+}
+.chartDataEntry{
+    margin-bottom: 15px;
+}
+.chartDescription{
+    width:70%;
+    /* background-color:#383037; */
+    background-color: #211e1f;
+}
+.chartDescriptionTitle{
+    font-size: 22px;
+    text-align:center;
+}
+.chartDescriptionBody{
+    padding:0 15px;
+}
+
+@media (max-width:600px) {
+    .chartData{
+        font-size: 12px;
+    }
+}
+/* 
+.highcharts-color-0 {
+    fill: #7cb5ec;
+    stroke: #7cb5ec;
+}
+.highcharts-axis.highcharts-color-0 .highcharts-axis-line {
+    stroke: #7cb5ec;
+} */

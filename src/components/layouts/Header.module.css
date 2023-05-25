@@ -1,0 +1,138 @@
+.header{
+    width: 100%;
+    /* min-height: 100px; */
+    height: 100px;
+    background-color: #211e1f;
+    display:flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-right: 10px;
+}
+
+.logo{
+    /* width: 100px; */
+    height: 150px;
+    min-width: 200px;
+    background-color: #211e1f;
+}
+
+.topnav {
+    width: 60%;
+    /* height:75px; */
+    /* min-height:75px; */
+    /* background-color: rgb(219, 83, 83); */
+    display:flex;
+    justify-content: flex-end;
+}
+  
+/* Style the links inside the navigation bar */
+.navItem {
+    /* width: 150px; */
+    height: 50px;
+    background-color: none;
+    color: #00ace1;
+    text-align: center;
+    /* padding: 25px 16px; */
+    padding: 15px 25px 16px 25px;
+    text-decoration: none;
+    font-size: 17px;
+    border-left: 3px solid #211e1f;
+    border-radius: 10px;
+}
+
+/* .userNavItem{
+    float: left;
+    overflow: hidden;
+} */
+
+.loggedInIcon{
+    /* line-height: 10px; */
+    position: absolute;
+    padding-left: 5px;
+    /* padding-right: 5px; */
+    /* margin-top: 5px; */
+}
+
+.dropDown{
+    position: relative;
+}
+
+.dropDownMenu{
+    display: none;
+    /* height: 300px; */
+    z-index: 2;
+    position: absolute;
+    background-color: #211e1f;
+    right:0;
+    padding: 0 10px;
+    /* width: 130px; */
+    top: 50px;
+    box-shadow: 0 2px 5px 0 rgba(114, 114, 114, 0.5);
+    /* opacity: 1; */
+}
+
+.dropDownHeading{
+    font-size: 24px;
+    border-bottom: #00ace1 1px solid;
+}
+
+.dropDown:hover > .informationGrid{
+    display: grid;
+    grid-template-columns: repeat(2, max-content);
+    color: #00ace1;
+    /* grid-template-rows: repeat(2, max-content); */
+    /* gap: 2rem; */
+}
+
+.dropDownLinks{
+    /* display: none; */
+    display: flex;
+    flex-direction: column;
+    padding: 10px 10px 0 10px;
+    gap: .25rem;
+}
+
+/* .dropDown:hover > .dropDownMenu{} */
+
+.dropDownMenu a{
+    display: inline-block;
+    background-color: #211e1f;
+    width: 100%;
+}
+
+.dropDownMenu a:hover{
+    color: white;
+}
+
+/* .navItem:nth-child(2) .navItem:nth-child(4){
+    font-size: 15px;
+} */
+  
+  /* Change the color of links on hover */
+.navItem:hover {
+    cursor: pointer;
+    background-color: #00ace1;
+    color: #f9f9f9;
+    /* color: black; */
+}
+  
+  /* Add a color to the active/current link */
+/* .active {
+    background-color: #04AA6D;
+    color: white;
+} */
+@media (max-width: 800px) {
+} 
+@media (max-width: 700px) {
+    
+    /* .loggedInIcon{
+        padding-left: 8px;
+        padding-right: 8px;
+    } */
+    
+    .navItem {
+        font-size:16px;
+        padding:18px 5px;
+    }
+}
+

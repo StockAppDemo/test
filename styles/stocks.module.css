@@ -1,0 +1,103 @@
+.inputDiv{
+    color: white;
+    margin-top: 75px;
+    width: 100%;
+    text-align: center;
+}
+
+.stocksInput{
+    height: 30px;
+    width: 300px;
+    padding-left: 10px;
+    outline: none;
+    border: 3px #00ace1;
+    /* border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px; */
+}
+
+.addButton{
+    height: 30px;
+    width: 150px;
+    color: inherit;
+    background-color: #00ace1;
+    border: 3px #00ace1;
+    /* border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px; */
+}
+
+.addButton:hover{
+    background-color: #aaa;
+    cursor: pointer;
+}
+
+.title{
+    text-align: center;
+    color: white;
+    margin-bottom: 0;
+}
+
+.hr1{
+    width: 200px;
+}
+
+.hr2{
+    width: 150px;
+}
+
+.hr3{
+    width: 100px;
+    margin-bottom: 21px;
+}
+
+.stocksContainer{
+    margin: auto auto;
+    display:inline-flex;
+    flex-shrink: 2;
+    flex-grow: 0;
+    flex-basis: content;
+    /* align-content: center; */
+    /* width: fit-content; */
+    justify-content: space-around;
+    /* justify-content: space-between; */
+    /* justify-content: flex-start; */
+    flex-wrap:wrap;
+    width: fit-content;
+    /* max-width: 1260px; */
+}
+
+/* .stocksContainer::after {
+    content: "";
+    flex: auto;
+  } */
+
+/* .stocksContainer{
+    background-color: #aaa;
+    width:100%;
+    display:flex;
+    align-content: flex-start;
+    flex-wrap:wrap;
+} */
+
+@media (min-width:1040px) {
+    /* .stocksContainer{
+         margin: 0 auto; 
+        background-color: rgb(63, 63, 63);
+        display:flex;
+        justify-content: space-around;
+        flex-wrap:wrap; 
+    } */
+    .inputDiv{
+       font-size: 20px;
+    }
+    
+    .stocksInput{
+        height: 50px;
+        /* font-size: 15px; */
+        width: 400px;
+    }
+    
+    .addButton{
+        height: 50px;
+    }
+    
+}
