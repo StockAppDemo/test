@@ -1,11 +1,10 @@
 import { MongoClient } from 'mongodb';
-import { MONGOUSERNAME, MONGOPASSWORD } from '../../api/secret';
 
 // import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 
 export default async function getTrendingStocks(key, data) {
     console.log("getTrendingStocks")
-    const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db();
     const otherCollection = db.collection('other');
     const trendingTable = await otherCollection.findOne({key:"trending"})

@@ -7,19 +7,8 @@ import BrandDark from "highcharts/themes/brand-dark";
 
 export default function Chart(props) {
   const [chartOptions, setChartOptions] = useState({});
-  //   const [chartData, setchartData] = useState([]);
   const [chartType, setChartType] = useState("line");
   const [buttonsLoaded, setButtonsLoaded] = useState(false);
-  // console.log("props", props);
-  // const [chartOptions, setChartOptions] = useState({})
-  //   useEffect(() => {
-  //     if (Object.keys(props.options).length === 0) {
-  //         return;
-  //     }
-  //     setchartData(() => {
-  //         return [...props.options.series[0].data]
-  //     });
-  //     }, [props.options]);
 
   useEffect(() => {
     if (Object.keys(props.options).length === 0) {
@@ -31,7 +20,6 @@ export default function Chart(props) {
         return [item[0], item[4]];
       });
     }
-    // const data = [[135,2345,534,234,653]];
     setChartOptions(() => {
       return {
         ...props.options,

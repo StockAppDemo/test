@@ -1,8 +1,7 @@
 import { MongoClient } from 'mongodb';
 import nextConnect from 'next-connect';
-import {MONGOUSERNAME, MONGOPASSWORD } from '/pages/api/secret';
 
-const client = new MongoClient(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`, {
+const client = new MongoClient(process.env.MONGOURL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

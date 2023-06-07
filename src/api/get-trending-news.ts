@@ -2,12 +2,11 @@ var url = require('url');
 import {MongoClient, ServerApiVersion } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 import getUser from "./getUser"
-import { MONGOUSERNAME,MONGOPASSWORD,YAHOOFINANCEAPI} from './secret';
 
-export default async function getTrendingStocks(
+export default async function getTrendingNews(
   ) {
-    console.log("getTrendingStocks")
-    const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+    console.log("getTrendingStocks", process.env.MONGODB_URI)
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db();
     const otherCollection = db.collection('other');
     const trending = await otherCollection.findOne({key:"trending-news"})
@@ -18,7 +17,7 @@ export default async function getTrendingStocks(
         fetch(`https://yfapi.net/v1/finance/trending/us`,{
                 method:"GET",
                 headers:{
-                        'x-api-key': YAHOOFINANCEAPI
+                        'x-api-key': process.env.YAHOOFINANCE_API
                     }
                 })
         .then((response) => {return response.json()})

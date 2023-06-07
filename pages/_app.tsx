@@ -1,6 +1,6 @@
-import '../styles/globals.css'
-import Header from '../src/components/layouts/Header';
-import Footer from '../src/components/layouts/Footer';
+import 'styles/globals.css'
+import Header from 'src/components/layouts/Header';
+import Footer from 'src/components/layouts/Footer';
 import { NextPageContext } from 'next';
 import cookie from 'cookie'
 import { useEffect, useState } from 'react';

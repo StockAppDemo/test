@@ -5,8 +5,7 @@ import Image from 'next/image'
 import { useState, useEffect } from 'react';
 import Stock from "./Stock";
 import classes from './TrendingStocks.module.css';
-import myFetch from '../../utils/myFetch'
-import {ROOTDIR} from '../../api/secret'
+import myFetch from 'src/utils/myFetch'
 
 export default function TrendingStocks(props) {
   const [dataLoaded,setDataLoaded] = useState(false)
@@ -14,7 +13,7 @@ export default function TrendingStocks(props) {
 
   useEffect(() => { // Get Data
       const authCookie = cookie.get("auth") 
-      const data = myFetch(`${ROOTDIR}/api/stocks/trending`,{
+      const data = myFetch(`/api/stocks/trending`,{
         method: "GET",
         headers: {
           auth: authCookie

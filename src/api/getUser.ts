@@ -1,8 +1,7 @@
 import {MongoClient, ServerApiVersion } from 'mongodb';
-import {MONGOUSERNAME, MONGOPASSWORD } from './secret';
 export default async function getUser (emailKey: string){
     
-    const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db();
     const usersCollection = db.collection('users');
     const users = await usersCollection.find({email:emailKey}).toArray()

@@ -1,14 +1,13 @@
 import { NextPageContext } from "next"
 import {useState, Component, useEffect} from 'react'
-// import {myGet} from '../api/myGet'
-import Stock from '../../src/components/stocks/Stock'
-import classes from '../../styles/stocks.module.css';
+// import {myGet} from 'api/myGet'
+import Stock from 'src/components/stocks/Stock'
+import classes from 'styles/stocks.module.css';
 import { findDOMNode, render } from 'react-dom'
-import {ROOTDIR} from '../../src/api/secret'
 import cookie from "js-cookie"
-import myFetch from "../../src/utils/myFetch"
-import StockPredictions from "../../src/components/stocks/StockPredictions";
-import {StockT, PredictionT} from "../../src/ts/interfaces/stocks"
+import myFetch from "src/utils/myFetch"
+import StockPredictions from "src/components/stocks/StockPredictions";
+import {StockT, PredictionT} from "src/ts/interfaces/stocks"
 
 export default function Stocks () {
   const [dataLoaded,setDataLoaded] = useState(false)
@@ -18,7 +17,7 @@ export default function Stocks () {
   const [stockPredictions, setStockPredictions] = useState<PredictionT[]>([])
   useEffect(() => { // Get Data
     const authCookie = cookie.get("auth") 
-    myFetch(`${ROOTDIR}/api/stocks`,{
+    myFetch(`/api/stocks`,{
       method: "GET",
       headers: {
         auth: authCookie
@@ -65,7 +64,7 @@ export default function Stocks () {
   }
 function searchHandler(){
   var input = (document.getElementById('symbolInput') as HTMLButtonElement).value.split(" ")
-  fetch(`${ROOTDIR}/api/stocks/prediction?prediction=${input}`,{
+  fetch(`/api/stocks/prediction?prediction=${input}`,{
     method:"GET",
     headers:{
     auth:cookie.get("auth")
@@ -85,7 +84,7 @@ function searchHandler(){
     console.log("uniqueSymbols",updatedSymbols)
     setStockPredictions([])
 
-    fetch(`${ROOTDIR}/api/stocks?options=new&stocks=${symbol}`,{
+    fetch(`/api/stocks?options=new&stocks=${symbol}`,{
       method:"GET",
       headers:{auth:cookie.get("auth")},
     })
@@ -103,7 +102,7 @@ function searchHandler(){
   }
   function updateStocksDB (newStocks: string[]){
     console.log("Running /api/auth/put, updatedSymbols = ",{email:user.email, stocks: stocks})
-    fetch(`${ROOTDIR}/api/stocks`, {
+    fetch(`/api/stocks`, {
       method: 'PUT',
       headers: {
         "Content-Type": "application/json"},

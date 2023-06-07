@@ -1,6 +1,6 @@
 
-import classes from '../styles/about.module.css';
-import StockNews from '../src/components/stocks/StockNews';
+import classes from 'styles/about.module.css';
+import StockNews from 'src/components/stocks/StockNews';
 
 export default function About() {
   console.log("RUNNING FIRST RENDER GET")

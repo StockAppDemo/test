@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import classes from "../styles/Home.module.css";
+import classes from "styles/Home.module.css";
 import cookie from "js-cookie";
-import { parseRawToChart } from "../src/utils/parse/rawToChart";
-import Chart from "../src/components/stocks/Chart";
-import  StockNews  from "../src/components/stocks/StockNews";
-import myFetch from "../src/utils/myFetch";
+import { parseRawToChart } from "src/utils/parse/rawToChart";
+import Chart from "src/components/stocks/Chart";
+import  StockNews  from "src/components/stocks/StockNews";
+import myFetch from "src/utils/myFetch";
 
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
 import { Carousel } from "react-responsive-carousel";
@@ -17,9 +17,11 @@ export default function Home() {
   console.log("RUNNING FIRST RENDER GET");
   const authCookie = cookie.get("auth");
 
+  console.log(process.env.ROOTDIR)
+
   useEffect(() => {
     const authCookie = cookie.get("auth")
-    myFetch(`http://localhost:3000/api/news/trending`,{
+    myFetch(`/api/news/trending`,{
         method: "GET",
     }).then((data) => {
       if (Object.keys(data).length === 0){
@@ -32,7 +34,7 @@ export default function Home() {
       })
     })
 
-    myFetch(`http://localhost:3000/api/stocks/trending/chart`,{
+    myFetch(`/api/stocks/trending/chart`,{
         method: "GET",
         headers: {
           auth: authCookie
@@ -69,8 +71,8 @@ export default function Home() {
           });
         })
       }, []);
-  var chartCarouselList
-  var stockNews
+  var chartCarouselList : any = []
+  var stockNews : any = []
   if (dataLoaded) {
     var i = 0;
     chartCarouselList = chartOptions.map((chartDetails) => {

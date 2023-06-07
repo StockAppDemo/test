@@ -1,10 +1,9 @@
 var url = require('url');
 // import {url} from 'url'
-import { authenticated } from '../../../src/api/authenticated'
+import { authenticated } from 'src/api/authenticated'
 import { NextApiRequest, NextApiResponse } from 'next';
-import getUser from "../../../src/api/getUser"
-import getTrendingStocks from '../../../src/api/get-trending-stocks';
-import { MONGOUSERNAME,MONGOPASSWORD,YAHOOFINANCEAPI} from '../../../src/api/secret';
+import getUser from "src/api/getUser"
+import getTrendingStocks from 'src/api/get-trending-stocks';
 import { MongoClient } from 'mongodb';
 import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 
@@ -50,7 +49,6 @@ export default authenticated(async function getStocks(
     fetch(`https://query1.finance.yahoo.com/v6/finance/quote?symbols=${stocks}`,{method:"GET"})
       .then((response) => {return response.json()})
         .then((data) => {
-            console.log("dataAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",JSON.stringify(data))
           if(data.quoteResponse.error) throw data.quoteResponse.error
           var resData = data.quoteResponse.result.map((item) => {
             return {symbol:item.symbol, name:item.shortName, price:item.regularMarketPrice, change:item.regularMarketChangePercent, dayRange:item.regularMarketDayRange}
@@ -86,7 +84,7 @@ export default authenticated(async function getStocks(
             "stocks": stocksJson
         }
         };
-    const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db();
     const usersCollection = db.collection('users');
     const resp = await usersCollection.updateOne({"email":email},update)

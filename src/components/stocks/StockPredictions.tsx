@@ -1,7 +1,7 @@
 
 import Image from "next/image"
 import classes from './StockPredictions.module.css';
-import prediction from "../../../pages/api/stocks/prediction";
+import prediction from "pages/api/stocks/prediction";
 
 export default function StockPredictions(props) {
 
@@ -24,11 +24,7 @@ export default function StockPredictions(props) {
 
     function Prediction(props){
     return (
-      // console.log("props = ", props),
-        // <div onClick={props.addHandler(props.prediction["1. symbol"])} className={classes.item}>
         <div onClick={() => props.addHandler(props.prediction["1. symbol"])} className={classes.item}>
-        {/* <div className={classes.item}> */}
-        {/* // <div onClick={() => props.addHandler("F")} className={classes.item}> */}
           <div><b>{props.prediction["1. symbol"]}</b></div>
           <div>{props.prediction["2. name"]}</div>
         </div>

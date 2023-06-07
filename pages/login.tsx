@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
 import Router from 'next/router'
-import classes from '../styles/login.module.css';
+import classes from 'styles/login.module.css';
 import { collectAssets } from 'next/dist/build/webpack/plugins/middleware-plugin'
 import cookie from "cookie"
 import { NextPageContext } from 'next';

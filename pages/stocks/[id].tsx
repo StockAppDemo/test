@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { Router, useRouter } from "next/router";
-import Chart from "../../src/components/stocks/Chart";
+import Chart from "src/components/stocks/Chart";
 import Link from "next/link";
 import HighchartsReact from "highcharts-react-official";
-import classes from "../../styles/stock.module.css";
-import myFetch from "../../src/utils/myFetch";
-import StockNews from "../../src/components/stocks/StockNews";
+import classes from "styles/stock.module.css";
+import myFetch from "src/utils/myFetch";
+import StockNews from "src/components/stocks/StockNews";
 import DarkBlue from "highcharts/themes/dark-blue";
-import { parseRawToChart } from "../../src/utils/parse/rawToChart";
+import { parseRawToChart } from "src/utils/parse/rawToChart";
 
 // https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo
 // TRY RUNNING IN PRODUCTION
@@ -29,7 +29,7 @@ export default function LineChart(props) {
   function updateChartData(range) {
     setUrlId(router.query.id);
     myFetch(
-      `http://localhost:3000/api/stocks/${router.query.id}?range=${range}`,
+      `/api/stocks/${router.query.id}?range=${range}`,
       { method: "GET" }
     )
       .then((data) => {
@@ -67,7 +67,7 @@ export default function LineChart(props) {
     if (router.isReady) {
       setUrlId(router.query.id);
       console.log("inside use effect (Details)", router.query.id);
-      fetch(`http://localhost:3000/api/news/${router.query.id}`, {
+      fetch(`/api/news/${router.query.id}`, {
         method: "GET",
       })
         .then((response) => {

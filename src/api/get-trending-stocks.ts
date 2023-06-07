@@ -3,15 +3,15 @@ var url = require('url');
 import {MongoClient, ServerApiVersion } from 'mongodb';
 import { NextApiRequest, NextApiResponse } from 'next';
 import getUser from "./getUser"
-import { MONGOUSERNAME,MONGOPASSWORD,YAHOOFINANCEAPI} from './secret';
 // import { responseSymbol } from 'next/dist/server/web/spec-compliant/fetch-event';
 
 // recollect trending stocks every 24 hours
-const DAY = 86400000 
+const DAY = 86 
+// const DAY = 86400000 
 
 export default async function getTrendingStocks() {
     console.log("getTrendingStocks")
-    const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+    const client = await MongoClient.connect(process.env.MONGODB_URI);
     const db = client.db();
     const otherCollection = db.collection('other');
     const trending = await otherCollection.findOne({key:"trending-stocks"})
@@ -21,7 +21,7 @@ export default async function getTrendingStocks() {
         return fetch(`https://yfapi.net/v1/finance/trending/us`,{
                 method:"GET",
                 headers:{
-                        'x-api-key': YAHOOFINANCEAPI
+                        'x-api-key': process.env.YAHOOFINANCE_API
                     }
                 })
         .then((response) => {return response.json()})
@@ -33,7 +33,7 @@ export default async function getTrendingStocks() {
                 console.log("PREPARE TO GET TRENDING STOCKS")
                 return fetch(`https://query1.finance.yahoo.com/v6/finance/quote?symbols=${tickers.join(',')}`,{
                     method:"GET",
-                    headers:{"x-api-key":YAHOOFINANCEAPI}})
+                    headers:{"x-api-key": process.env.YAHOOFINANCE_API}})
                 .then((response) => {return response.json()})
                 .then((data) => {
                     console.log("GET TRENDING STOCKS\n",JSON.stringify(data))

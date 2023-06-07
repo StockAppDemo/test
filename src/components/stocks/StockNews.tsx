@@ -3,8 +3,6 @@ import Image from "next/image"
 import classes from './StockNews.module.css';
 
 export default function StockNews(props) {
-    // console.log("props = ", props)
-    // console.log((props.price < 0.0 ? "posChange" : "negChange"))
       return (
         <div className={classes.newsContainer}>
             <a className={classes.anchor} href={props.url} target="_blank" rel="noreferrer">

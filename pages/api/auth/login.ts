@@ -1,13 +1,12 @@
-import {MongoClient, ServerApiVersion } from 'mongodb';
 import {compare} from 'bcrypt';
 import {sign} from 'jsonwebtoken'
 import cookie from 'cookie'
-import getUser from '../../../src/api/getUser'
-import {SECRET} from '../../../src/api/secret'
+import getUser from 'src/api/getUser'
 
 export function setLoginJWTHeader(res, user :any){
+  console.log(process.env.SECRET)
   const claims = {sub: user._id.toString(),email:user.email,name:user.name,admin:user.admin}
-  const jwt = sign(claims,SECRET, { expiresIn: '6h' })
+  const jwt = sign(claims,process.env.SECRET, { expiresIn: '6h' })
   var userCookieData =JSON.stringify({name:user.name,email:user.email})
   res.setHeader('Set-Cookie',[
     cookie.serialize('auth',jwt,{ // Handles Authentication

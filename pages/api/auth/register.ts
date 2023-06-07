@@ -1,9 +1,8 @@
 import {MongoClient, ServerApiVersion } from 'mongodb';
 import {hash} from 'bcrypt';
-import getUser from '../../../src/api/getUser'
-import { MONGOUSERNAME,MONGOPASSWORD } from '../../../src/api/secret';
+import getUser from 'src/api/getUser'
 import { setLoginJWTHeader } from './login'
-import { UserT } from '../../../src/ts/interfaces/user';
+import { UserT } from 'src/ts/interfaces/user';
 
 
 async function registerCall (req, res){
@@ -12,7 +11,7 @@ async function registerCall (req, res){
     const {name,email ,password} = data;
     const user = await getUser(email)
     if (user === undefined){
-      const client = await MongoClient.connect(`mongodb+srv://${MONGOUSERNAME}:${MONGOPASSWORD}@cluster0.yksmj.mongodb.net/StocksApp?retryWrites=true&w=majority`);
+      const client = await MongoClient.connect(process.env.MONGODB_URI);
       const usersCollection = client.db("StocksApp").collection('users');
 
       hash(password, 12, async function(err, hash) {

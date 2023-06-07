@@ -1,7 +1,6 @@
 var url = require('url');
 import { NextApiRequest, NextApiResponse } from 'next';
-import { authenticated } from '../../../src/api/authenticated';
-import { ALPHAVANTAGEAPI } from '../../../src/api/secret';
+import { authenticated } from 'src/api/authenticated';
 
 export default authenticated(async function getStocks(
     req: NextApiRequest,
@@ -10,7 +9,7 @@ export default authenticated(async function getStocks(
     if (req.method === "GET"){
         var prediction = url.parse(req.url,true).query.prediction
         console.log("q",prediction)
-        await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${prediction}&apikey=${ALPHAVANTAGEAPI}`, {
+        await fetch(`https://www.alphavantage.co/query?function=SYMBOL_SEARCH&keywords=${prediction}&apikey=${process.env.ALPHAVANTAGE_API}`, {
             method: 'GET',
             headers: {
               "Content-Type": "application/json"
