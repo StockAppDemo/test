@@ -1,6 +1,5 @@
 .header{
     width: 100%;
-    /* min-height: 100px; */
     height: 100px;
     background-color: #211e1f;
     display:flex;
@@ -9,7 +8,6 @@
 }
 
 .logo{
-    /* width: 100px; */
     height: 150px;
     min-width: 200px;
     background-color: #211e1f;
@@ -17,21 +15,16 @@
 
 .topnav {
     width: 60%;
-    /* height:75px; */
-    /* min-height:75px; */
-    /* background-color: rgb(219, 83, 83); */
     display:flex;
     justify-content: flex-end;
 }
   
-/* Style the links inside the navigation bar */
 .navItem {
     width: 135px;
     height: 50px;
     background-color: none;
     color: #00ace1;
     text-align: center;
-    /* padding: 25px 16px; */
     padding: 15px 25px 16px 25px;
     text-decoration: none;
     font-size: 17px;
@@ -40,8 +33,6 @@
 }
 
 .navItemDropDown{
-    /* width:27%; */
-    /* display: inline; */
     padding-left:8px;
     padding-right:0px;
 }
@@ -52,15 +43,12 @@
 }
 
 .navDropDown .dropButton{
-    /* width: 500px !important; */
     font-size: 16px;
-    /* border: none;
-    outline: none; */
     color: white;
     padding: 14px 16px;
     background-color: inherit;
-    font-family: inherit; /* Important for vertical align on mobile phones */
-    margin: 0; /* Important for vertical align on mobile phones */
+    font-family: inherit;
+    margin: 0;
 }
 .navItemDropDown{
     /* margin-right: 10px; */
@@ -76,15 +64,12 @@
     display: none;
     position: block;
     background-color: #f9f9f9;
-    /* min-width: 500px; */
     margin-top: 10px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index:10;
   }
 
 .dropDownContent a {
-    /* width: 500px !important; */
-    /* width:150px; */
     float: none;
     color: black;
     padding: 12px 16px;
@@ -98,19 +83,12 @@
 }
 
 
-/* .navItem:nth-child(2) .navItem:nth-child(4){
-    font-size: 15px;
-} */
-  
-  /* Change the color of links on hover */
 .navItem:hover {
     cursor: pointer;
     background-color: #00ace1;
     color: #f9f9f9;
-    /* color: black; */
 }
   
-  /* Add a color to the active/current link */
 .active {
     background-color: #04AA6D;
     color: white;
@@ -118,7 +96,6 @@
 @media (max-width: 800px) {
     .navItemDropDown{
         width:150px;
-        /* display: inline; */
         padding-left:0px;
         padding-right:0px;
     }
@@ -136,8 +113,6 @@
     }
     
     .navItemDropDown{
-        /* width:27%; */
-        /* display: inline; */
         padding-top: 10px;
         padding-left:4px;
         padding-right:4px;

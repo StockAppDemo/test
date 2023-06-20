@@ -65,6 +65,12 @@
     /* max-width: 1260px; */
 }
 
+.cryptoDisclaimer{
+    color: white;
+    text-align: center;
+    margin-left: 50px;
+}
+
 /* .stocksContainer::after {
     content: "";
     flex: auto;

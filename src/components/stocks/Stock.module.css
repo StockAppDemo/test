@@ -3,18 +3,14 @@
     width: 400px;
     height: 150px;
     font-size: 18px;
-    /* background-color: #ccc; */
     background-color: #00ace1;
     margin: 10px 5px; 
     display: table;
     padding-bottom: 10px;
-    /* min-width: 300px; */
-    /* border: 2px solid inherit; */
     border-radius: 15px;
 }
 .row{
     display:table-row;
-    /* width: 100%; */
 }
 .ticker{
     font-size: 22px;
@@ -26,7 +22,6 @@
     width: 50%;
     margin-right:0;
     height:50px;
-    /* background-color: #111; */
     background-color: #eee;
 
     padding-left: 20px;
@@ -45,7 +40,6 @@
     text-align: center;
     display:table-cell;
     height:100px;
-    /* background-color: #222; */
     background-color: #fff;
 }
 .rightContainer div{
@@ -56,31 +50,25 @@
     width: 25px;
     height: 25px;
     right:0px;
-    /* margin-left:115px; */
     border: 0;
     background-color: inherit;
 }
 .addDeleteButton :hover{
     cursor: pointer;
-    /* background-color: #00ace1; */
 }
 .buttonDiv{
     padding-right: 10px;
     text-align: right;
-    /* width: 100%; */
 }
 .name{
-    /* margin-left: auto; */
-    /* padding-left: 10px; */
-    /* display:table-row; */
-    /* align-self:end; */
     word-wrap: break-word;
     font-size: 20px;
     text-align: center;
     width:200%;
     color:white;
-    /* margin-left: center; */
 }
+
+
 .moreInfoButton{
     width: 100%;
     height: 25px;
@@ -88,17 +76,12 @@
     left:50%;
     border: 0;
     border-radius: 8px;
-}
-.moreInfoButton :hover{
     cursor: pointer;
-    background-color: red;
+}
+.notSupportedButton{
+    cursor: not-allowed;
 }
 
-/* .stockChart{
-    width: 800px;
-    height: 400px;
-    background-color: black;
-} */
 .borderBottom{
     border-bottom: 3px;
     background-color: red;

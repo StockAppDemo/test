@@ -33,3 +33,5 @@ yarn-error.log*
 pages/api/secret.ts
 env.local
 src/api/secret.ts
+pages/api/stocks/[id]/chart.ts
+ISSUES.txt
