@@ -1,24 +1,22 @@
-import Image from "next/image";
-import { useEffect, useState } from "react";
-import classes from "./Chart.module.css";
-import Highcharts from "highcharts/highstock";
-import HighchartsReact from "highcharts-react-official";
-import BrandDark from "highcharts/themes/brand-dark";
+import { useEffect, useState } from "react"
+import Highcharts from "highcharts/highstock"
+import HighchartsReact from "highcharts-react-official"
+import BrandDark from "highcharts/themes/brand-dark"
 
 export default function Chart(props) {
-  const [chartOptions, setChartOptions] = useState({});
-  const [chartType, setChartType] = useState("line");
-  const [buttonsLoaded, setButtonsLoaded] = useState(false);
+  const [chartOptions, setChartOptions] = useState({})
+  const [chartType, setChartType] = useState("line")
+  const [buttonsLoaded, setButtonsLoaded] = useState(false)
 
   useEffect(() => {
     if (Object.keys(props.options).length === 0) {
-      return;
+      return
     }
-    var data = props.options.series[0].data;
+    var data = props.options.series[0].data
     if (props.options.series[0].type === "line") {
       data = data.map((item) => {
-        return [item[0], item[4]];
-      });
+        return [item[0], item[4]]
+      })
     }
     setChartOptions(() => {
       return {
@@ -28,21 +26,21 @@ export default function Chart(props) {
           buttons: [
             {
               type: "all", //free api doesn't allow me to load all ranges on page load
-              text: "Day",
+              text: "D",
               title: "Day",
-              // events:{ click:()=>handleSelectorClick("day")}
+              events: { click: () => handleZoomClick("day") },
             },
             {
               type: "all",
-              text: "Month",
+              text: "M",
               title: "Month",
-              // events:{ click:()=>handleSelectorClick("month")}
+              events: { click: () => handleZoomClick("month") },
             },
             {
               type: "all",
               text: "all",
               title: "All",
-              // events:{ click:()=>handleSelectorClick("all")}
+              events: { click: () => handleZoomClick("all") },
             },
           ],
           selected: 0,
@@ -67,29 +65,30 @@ export default function Chart(props) {
         ],
         chart: {
           events: {
-            render: function () {// "load:" doesn't work properly with react so I used "render" instead
-              if (buttonsLoaded) return;
-              setButtonsLoaded(true);
+            render: function () {
+              // "load:" doesn't work properly with react so I used "render" instead
+              if (buttonsLoaded) return
+              setButtonsLoaded(true)
               const attributes = {
                 zIndex: 3,
                 width: 70,
                 "text-align": "center",
                 "border-radius": "5px",
-              };
+              }
               this.renderer
                 .button("Line Chart", 10, 10)
                 .attr(attributes)
                 .add()
                 .on("click", () => {
-                  setChartType("line");
-                });
+                  setChartType("line")
+                })
               this.renderer
                 .button("Candlestick", 105, 10)
                 .attr(attributes)
                 .add()
                 .on("click", () => {
-                  setChartType("candlestick");
-                });
+                  setChartType("candlestick")
+                })
             },
           },
         },
@@ -102,30 +101,23 @@ export default function Chart(props) {
         plotOptions: {
           candlestick: {},
         },
-      };
-    });
-  }, [props, chartType,buttonsLoaded ]);
+      }
+    })
+  }, [props, chartType, buttonsLoaded])
+
+  function handleZoomClick(range: string) {
+    console.log(range + " clicked")
+  }
 
   function lineChartButton() {}
 
-  function candlestickChartButton() {
-    console.log("button pressed");
-  }
-  if (typeof BrandDark !== undefined){
-    BrandDark(Highcharts)
-}
-//   if (props.theme) BrandDark(Highcharts);
-//   else props.theme(Highcharts);
-  // console.log("chartOptions", chartOptions);
+  BrandDark(Highcharts)
+
   return (
     <>
       {props.options && (
-        <HighchartsReact
-          highcharts={Highcharts}
-          options={chartOptions}
-          constructorType={"stockChart"}
-        />
+        <HighchartsReact highcharts={Highcharts} options={chartOptions} constructorType={"stockChart"} />
       )}
     </>
-  );
+  )
 }
